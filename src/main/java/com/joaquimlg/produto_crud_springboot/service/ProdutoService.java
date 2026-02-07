@@ -1,4 +1,26 @@
 package com.joaquimlg.produto_crud_springboot.service;
 
+import com.joaquimlg.produto_crud_springboot.model.Produto;
+import com.joaquimlg.produto_crud_springboot.repository.ProdutoRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
 public class ProdutoService {
+
+    private final ProdutoRepository produtoRepository;
+
+    public ProdutoService(ProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
+    }
+
+    public List<Produto> listarProdutos(){
+        return  produtoRepository.findAll();
+    }
+
+    public Produto cadastrarProduto(Produto produto){
+        return produtoRepository.save(produto);
+    }
+
 }
