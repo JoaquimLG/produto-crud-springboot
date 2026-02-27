@@ -24,7 +24,7 @@ public class ProdutoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id){
-        return produtoService.buscarProdutoId(id)
+        return produtoService.buscarProdutoPorId(id)
                 .map(produto -> ResponseEntity.ok().body(produto))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -32,5 +32,12 @@ public class ProdutoController {
     @PostMapping
     public Produto criarProduto(@RequestBody Produto produto){
         return produtoService.cadastrarProduto(produto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id,  @RequestBody Produto produto){
+        return produtoService.atualizarProduto(id, produto)
+                .map(produtoAtualizado -> ResponseEntity.ok().body(produtoAtualizado))
+                .orElse(ResponseEntity.notFound().build());
     }
 }

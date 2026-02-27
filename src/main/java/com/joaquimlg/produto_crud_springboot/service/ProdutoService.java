@@ -20,12 +20,25 @@ public class ProdutoService {
         return  produtoRepository.findAll();
     }
 
-    public Optional<Produto> buscarProdutoId(Long id){
+    public Optional<Produto> buscarProdutoPorId(Long id){
         return produtoRepository.findById(id);
     }
 
     public Produto cadastrarProduto(Produto produto){
         return produtoRepository.save(produto);
+    }
+
+    public Optional<Produto> atualizarProduto(Long id, Produto produtoAtualizado){
+        return produtoRepository.findById(id)
+                .map(produtoExistente ->
+                {
+                    produtoExistente.setNome(produtoAtualizado.getNome());
+                    produtoExistente.setPreco(produtoAtualizado.getPreco());
+                    produtoExistente.setQuantidade(produtoAtualizado.getQuantidade());
+
+                    return produtoRepository.save(produtoExistente);
+                }
+        );
     }
 
 }
