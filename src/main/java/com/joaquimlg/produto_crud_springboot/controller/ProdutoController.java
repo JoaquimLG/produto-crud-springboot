@@ -40,4 +40,15 @@ public class ProdutoController {
                 .map(produtoAtualizado -> ResponseEntity.ok().body(produtoAtualizado))
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Produto> deletarProduto(@PathVariable Long id){
+        boolean deletado = produtoService.deletarProduto(id);
+
+        if (deletado){
+            return  ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

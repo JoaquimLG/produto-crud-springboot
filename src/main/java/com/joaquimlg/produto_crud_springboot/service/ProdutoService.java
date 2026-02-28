@@ -41,4 +41,12 @@ public class ProdutoService {
         );
     }
 
+    public boolean deletarProduto(Long id){
+        if (produtoRepository.existsById(id)){
+            produtoRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }
