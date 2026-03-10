@@ -2,6 +2,7 @@ package com.joaquimlg.produto_crud_springboot.controller;
 
 import com.joaquimlg.produto_crud_springboot.model.Produto;
 import com.joaquimlg.produto_crud_springboot.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +31,12 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto criarProduto(@RequestBody Produto produto){
+    public Produto criarProduto(@Valid @RequestBody Produto produto){
         return produtoService.cadastrarProduto(produto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id,  @RequestBody Produto produto){
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @Valid @RequestBody Produto produto){
         return produtoService.atualizarProduto(id, produto)
                 .map(produtoAtualizado -> ResponseEntity.ok().body(produtoAtualizado))
                 .orElse(ResponseEntity.notFound().build());
