@@ -52,14 +52,13 @@ código.
 
 A API disponibiliza os seguintes endpoints:
 
-  Método   Endpoint         Descrição
-  -------- ---------------- -------------------------------
-  GET      /produtos        Lista todos os produtos
-  GET      /produtos/{id}   Busca um produto pelo ID
-  POST     /produtos        Cria um novo produto
-  PUT      /produtos/{id}   Atualiza um produto existente
-  DELETE   /produtos/{id}   Remove um produto
-
+| Método | Endpoint           | Descrição                          |
+|--------|-------------------|------------------------------------|
+| GET    | /produtos         | Lista todos os produtos            |
+| GET    | /produtos/{id}    | Busca um produto pelo ID           |
+| POST   | /produtos         | Cria um novo produto               |
+| PUT    | /produtos/{id}    | Atualiza um produto existente      |
+| DELETE | /produtos/{id}    | Remove um produto                  |
 ------------------------------------------------------------------------
 
 ## Validações
